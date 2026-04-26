@@ -26,7 +26,7 @@ export function OrderSummary({cart, deliveryOptions}) {
                 <div className="cart-item-details">
                   <div className="product-name">{cartItem.product.name}</div>
                   <div className="product-price">
-                    ${formatMoney(cartItem.product)}
+                    ${formatMoney(cartItem.product.priceCents)}
                   </div>
                   <div className="product-quantity">
                     <span>
@@ -44,7 +44,10 @@ export function OrderSummary({cart, deliveryOptions}) {
                   </div>
                 </div>
 
-                <DeliveryOptions deliveryOptions={deliveryOptions} cartItem={cartItem}/>
+                <DeliveryOptions
+                  deliveryOptions={deliveryOptions}
+                  cartItem={cartItem}
+                />
               </div>
             </div>
           );
