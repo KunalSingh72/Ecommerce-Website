@@ -12,17 +12,25 @@ export function CheckoutPage({ cart, loadCart }) {
 
   useEffect(() => {
     const fetchCheckoutData = async () => {
-      let response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/delivery-options?expand=estimatedDeliveryTime`,
-      );
+      try {
+        const deliveryRes = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/delivery-options?expand=estimatedDeliveryTime`,
+        );
 
-      setDeliveryOptions(response.data);
+        setDeliveryOptions(deliveryRes.data || []);
 
-      response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/payment-summary`,
-      );
-      setPaymentSummary(response.data);
+        const paymentRes = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/payment-summary`,
+        );
+
+        setPaymentSummary(paymentRes.data || null);
+      } catch (error) {
+        console.error("Checkout fetch error:", error);
+        setDeliveryOptions([]);
+        setPaymentSummary(null);
+      }
     };
+
     fetchCheckoutData();
   }, [cart]);
 
@@ -37,7 +45,7 @@ export function CheckoutPage({ cart, loadCart }) {
 
         <div className="checkout-grid">
           <OrderSummary
-            cart={cart}
+            cart={cart || []}
             deliveryOptions={deliveryOptions}
             loadCart={loadCart}
           />
