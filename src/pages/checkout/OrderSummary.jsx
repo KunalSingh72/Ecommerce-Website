@@ -9,6 +9,8 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
         cart.map((cartItem) => {
           const selectedDeliveryOption = deliveryOptions.find(
             (deliveryOption) => {
+              console.log("cartItem:", cartItem.deliveryOptionId);
+              console.log("deliveryOptions:", deliveryOptions);
               return String(deliveryOption.id) === String(cartItem.deliveryOptionId);
             },
           );
@@ -22,7 +24,7 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
             <div key={cartItem.productId} className="cart-item-container">
               <div className="delivery-date">
                 Delivery date:{" "}
-                {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format(
+                {(dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs) || Date.now()).format(
                   "dddd, MMMM D",
                 )}
               </div>
