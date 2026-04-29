@@ -12,13 +12,20 @@ export function CheckoutPage({ cart, loadCart }) {
 
   useEffect(() => {
     const fetchCheckoutData = async () => {
+<<<<<<< HEAD
       try {
         const deliveryRes = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/delivery-options?expand=estimatedDeliveryTime`,
         );
+=======
+      let response = await axios.get(
+        "/api/delivery-options?expand=estimatedDeliveryTime",
+      );
+>>>>>>> parent of c4d61a1 (create .env and updated backend url)
 
         setDeliveryOptions(deliveryRes.data || []);
 
+<<<<<<< HEAD
         const paymentRes = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/payment-summary`,
         );
@@ -29,6 +36,10 @@ export function CheckoutPage({ cart, loadCart }) {
         setDeliveryOptions([]);
         setPaymentSummary(null);
       }
+=======
+      response = await axios.get("/api/payment-summary");
+      setPaymentSummary(response.data);
+>>>>>>> parent of c4d61a1 (create .env and updated backend url)
     };
 
     fetchCheckoutData();
@@ -44,11 +55,15 @@ export function CheckoutPage({ cart, loadCart }) {
         <div className="page-title">Review your order</div>
 
         <div className="checkout-grid">
+<<<<<<< HEAD
           <OrderSummary
             cart={cart || []}
             deliveryOptions={deliveryOptions}
             loadCart={loadCart}
           />
+=======
+          <OrderSummary cart={cart} deliveryOptions={deliveryOptions} loadCart={loadCart}/>
+>>>>>>> parent of c4d61a1 (create .env and updated backend url)
 
           <PaymentSummary paymentSummary={paymentSummary} loadCart={loadCart} />
         </div>

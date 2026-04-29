@@ -14,12 +14,9 @@ export function DeliveryOptions({ deliveryOptions, cartItem, loadCart }) {
         }
 
         const updateDeliveryOption = async () => {
-          await axios.put(
-            `${import.meta.env.VITE_API_URL}/api/cart-items/${cartItem.productId}`,
-            {
-              deliveryOptionId: deliveryOption.id,
-            },
-          );
+          await axios.put(`/api/cart-items/${cartItem.productId}`, {
+            deliveryOptionId: deliveryOption.id,
+          });
           await loadCart();
         };
         return (

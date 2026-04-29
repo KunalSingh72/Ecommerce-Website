@@ -14,6 +14,7 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
           );
 
           const deleteCartItem = async () => {
+<<<<<<< HEAD
             try {
               await axios.delete(
                 `${import.meta.env.VITE_API_URL}/api/cart-items/${cartItem.productId}`,
@@ -22,6 +23,10 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
             } catch (error) {
               console.error("Delete failed:", error);
             }
+=======
+            await axios.delete(`/api/cart-items/${cartItem.productId}`);
+            loadCart();
+>>>>>>> parent of c4d61a1 (create .env and updated backend url)
           };
 
           const deliveryDate = selectedDeliveryOption?.estimatedDeliveryTimeMs
