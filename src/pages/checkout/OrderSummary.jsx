@@ -9,7 +9,7 @@ export function OrderSummary({ cart, deliveryOptions, loadCart }) {
         cart.map((cartItem) => {
           const selectedDeliveryOption = deliveryOptions.find(
             (deliveryOption) => {
-              return deliveryOption.id === cartItem.deliveryOptionId;
+              return String(deliveryOption.id) === String(cartItem.deliveryOptionId);
             },
           );
           const deleteCartItem = async () => {

@@ -26,18 +26,6 @@ export function CheckoutPage({ cart, loadCart }) {
     fetchCheckoutData();
   }, [cart]);
 
-
-  useEffect(() => {
-    axios
-      .get(
-        `${import.meta.env.VITE_API_URL}/api/delivery-options?expand=estimatedDeliveryTime`,
-      )
-      .then((res) => {
-        console.log(res.data); // IMPORTANT
-        setDeliveryOptions(res.data);
-      });
-  }, []);
-
   return (
     <>
       <title>Checkout</title>
