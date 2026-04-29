@@ -13,10 +13,10 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: "https://ecommerce-backend-9a4w.onrender.com",
       },
       "/images": {
-        target: "http://localhost:3000",
+        target: "https://ecommerce-backend-9a4w.onrender.com",
       },
     },
   },
