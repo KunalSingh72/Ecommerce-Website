@@ -12,7 +12,7 @@ describe("HomePage component", () => {
     loadCart = vi.fn();
 
     axios.get.mockImplementation(async (urlPath) => {
-      if (urlPath === "/api/products") {
+      if (urlPath === `${import.meta.env.VITE_API_URL}/api/products`) {
         return {
           data: [
             {

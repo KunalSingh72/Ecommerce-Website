@@ -10,7 +10,9 @@ import "./App.css";
 function App() {
   const [cart, setCart] = useState([]);
   const loadCart = async () => {
-    const response = await axios.get("/api/cart-items?expand=product");
+    const response = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/products`,
+    );
     //query Parameter
     setCart(response.data);
   };
